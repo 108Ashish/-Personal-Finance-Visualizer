@@ -8,7 +8,7 @@ A modern full-stack web application to help users **track**, **visualize**, and 
 
 ## 🌐 Live Links
 
-- 🔗 **Frontend (Vercel)**: [https://personal-finance-visualizer-ejso.vercel.app](https://personal-finance-visualizer-ejso.vercel.app/)
+- 🔗 **Frontend (Vercel)**: [https://personal-finance-visualizer-beige-chi.vercel.app](https://personal-finance-visualizer-beige-chi.vercel.app/)
 - 🔗 **Backend (Render)**: [https://backend-personal-finance-xbtw.onrender.com](https://backend-personal-finance-xbtw.onrender.com)
 
 ---
