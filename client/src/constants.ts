@@ -1,1 +1,1 @@
-export const HOST_URL = "http://localhost:3001";
+export const HOST_URL = "https://backend-personal-finance-xbtw.onrender.com";
