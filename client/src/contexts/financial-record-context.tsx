@@ -1,4 +1,3 @@
-import { useUser } from "@clerk/clerk-react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { HOST_URL } from "../constants";
 export interface FinancialRecord {
@@ -28,15 +27,12 @@ export const FinancialRecordsProvider = ({
   children: React.ReactNode;
 }) => {
   const [records, setRecords] = useState<FinancialRecord[]>([]);
-  const { user } = useUser();
 
   // In the fetchRecords function:
 const fetchRecords = async () => {
   try {
     // Use a different endpoint based on whether user is available
-    const endpoint = user 
-      ? `${HOST_URL}/financial-records/getAllByUserID/${user.id}`
-      : `${HOST_URL}/financial-records/all`;
+    const endpoint = `${HOST_URL}/financial-records/all`;
       
     const response = await fetch(endpoint);
 
@@ -52,7 +48,7 @@ const fetchRecords = async () => {
 
   useEffect(() => {
     fetchRecords();
-  }, [user]);
+  }, []);
 
   // In the addRecord function:
 const addRecord = async (record: FinancialRecord) => {
@@ -60,7 +56,7 @@ const addRecord = async (record: FinancialRecord) => {
     // Ensure userId is set from the current authenticated user or use default
     const recordWithUserId = {
       ...record,
-      userId: user?.id || "default-user"
+      userId:"default-user"
     };
     
     console.log("Sending record:", recordWithUserId);
@@ -90,7 +86,7 @@ const addRecord = async (record: FinancialRecord) => {
       // Ensure userId is preserved when updating
       const recordWithUserId = {
         ...newRecord,
-        userId: user?.id || newRecord.userId
+        userId: newRecord.userId
       };
       
       const response = await fetch(
