@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const financialRecordRouter = require("./routes/financial-records");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const app = express();
 
@@ -9,8 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 // Updated MongoDB URI with database name and connection options
-const mongoURI =
-  "mongodb+srv://singhashishsuttle:su1fF8bLAR6OOPDY@financetracker.alicd3x.mongodb.net/financetracker?retryWrites=true&w=majority";
+const mongoURI = process.env.MONGO_URI;
 
 // Remove deprecated options and add better timeout
 mongoose

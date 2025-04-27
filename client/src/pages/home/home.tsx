@@ -10,6 +10,8 @@ import {
   Legend,
 } from "recharts";
 import "./home.css";
+import { HOST_URL } from "../../constants";
+
 
 interface MonthlyData {
   month: string;
@@ -26,7 +28,7 @@ const HomePage: React.FC = () => {
     const fetchMonthlyData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:3001/financial-records/monthlyTotals');
+        const response = await fetch(`${HOST_URL}/financial-records/monthlyTotals`);
         
         if (!response.ok) {
           throw new Error('Failed to fetch monthly data');

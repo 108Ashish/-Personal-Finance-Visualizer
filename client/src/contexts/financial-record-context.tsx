@@ -1,6 +1,6 @@
 import { useUser } from "@clerk/clerk-react";
 import { createContext, useContext, useEffect, useState } from "react";
-
+import { HOST_URL } from "../constants";
 export interface FinancialRecord {
   _id?: string;
   userId: string;
@@ -35,8 +35,8 @@ const fetchRecords = async () => {
   try {
     // Use a different endpoint based on whether user is available
     const endpoint = user 
-      ? `http://localhost:3001/financial-records/getAllByUserID/${user.id}`
-      : `http://localhost:3001/financial-records/all`;
+      ? `${HOST_URL}/financial-records/getAllByUserID/${user.id}`
+      : `${HOST_URL}/financial-records/all`;
       
     const response = await fetch(endpoint);
 
@@ -65,7 +65,7 @@ const addRecord = async (record: FinancialRecord) => {
     
     console.log("Sending record:", recordWithUserId);
     
-    const response = await fetch("http://localhost:3001/financial-records", {
+    const response = await fetch("${HOST_URL}/financial-records", {
       method: "POST",
       body: JSON.stringify(recordWithUserId),
       headers: {
@@ -94,7 +94,7 @@ const addRecord = async (record: FinancialRecord) => {
       };
       
       const response = await fetch(
-        `http://localhost:3001/financial-records/${id}`,
+        `${HOST_URL}/financial-records/${id}`,
         {
           method: "PUT",
           body: JSON.stringify(recordWithUserId),
@@ -127,7 +127,7 @@ const addRecord = async (record: FinancialRecord) => {
   const deleteRecord = async (id: string) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/financial-records/${id}`,
+        `${HOST_URL}/financial-records/${id}`,
         {
           method: "DELETE",
         }
