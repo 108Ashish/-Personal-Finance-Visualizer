@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import DashBoard from "../src/pages/dashboard/Dashboard.tsx";
- import { Auth } from "./pages/auth";
 import { FinancialRecordsProvider } from "./contexts/financial-record-context";
 // import { dark } from "@clerk/themes";
 import Home from "../src/pages/home/home.tsx";
@@ -25,7 +24,6 @@ function App() {
               
             }
           />
-          <Route path="/auth" element={<Auth />} />
        
         </Routes>
       </div>
