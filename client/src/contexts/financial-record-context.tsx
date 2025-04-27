@@ -61,7 +61,7 @@ const addRecord = async (record: FinancialRecord) => {
     
     console.log("Sending record:", recordWithUserId);
     
-    const response = await fetch("${HOST_URL}/financial-records", {
+    const response = await fetch(`${HOST_URL}/financial-records`, {
       method: "POST",
       body: JSON.stringify(recordWithUserId),
       headers: {
